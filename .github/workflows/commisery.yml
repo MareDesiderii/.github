@@ -17,3 +17,4 @@ jobs:
       with:
         token: ${{ github.token }}
         validate-pull-request: false # don't validate the pull request title
+        validate-pull-request-title-bump: false
