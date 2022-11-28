@@ -1,4 +1,4 @@
-on: [workflow_call]
+on: workflow_call
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
