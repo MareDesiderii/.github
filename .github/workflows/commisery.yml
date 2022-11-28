@@ -1,7 +1,9 @@
 on:
+  workflow_call:
+    inputs:
+    secrets:
   pull_request:
     types: [edited, opened, synchronize, reopened]
-  workflow_call:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
