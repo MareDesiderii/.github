@@ -1,12 +1,8 @@
 on: [workflow_call]
 
-#concurrency:
-#  group: ${{ github.workflow }}-${{ github.ref }}
-#  cancel-in-progress: true
-#
-#permissions:
-#  contents: read
-#  pull-requests: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   commit-message:
@@ -16,5 +12,6 @@ jobs:
       uses: tomtom-international/commisery-action@master
       with:
         token: ${{ github.token }}
-        validate-pull-request: false # don't validate the pull request title
+        # don't validate the pull request title
+        validate-pull-request: false
         validate-pull-request-title-bump: false
