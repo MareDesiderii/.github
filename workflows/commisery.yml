@@ -1,0 +1,22 @@
+on:
+  workflow_call:
+  pull_request:
+    types: [edited, opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  commit-message:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Commisery
+      uses: tomtom-international/commisery-action@master
+      with:
+        token: ${{ github.token }}
+        validate-pull-request: false # don't validate the pull request title
